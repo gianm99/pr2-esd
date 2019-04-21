@@ -1,4 +1,3 @@
--- Cola genérica implementada con punteros en clase
 package body dcola is
 
    procedure cvacia(qu: out cola) is

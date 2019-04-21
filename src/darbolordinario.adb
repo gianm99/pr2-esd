@@ -1,6 +1,5 @@
-with dcola;
-
 package body darbolordinario is
+  
    -- procedimiento para vaciar el arbol
    procedure avacio(t: out arbol) is
       r: pnode renames t.raiz;
@@ -23,11 +22,14 @@ package body darbolordinario is
       n:= new node;
       n.c:= x;
       n.padre:= r;
-      if r.primer_hijo = null then
+      if e_primer_hijo(t) then
          r.primer_hijo := n;
       else
-         while(
+         null;
       end if;
+   exception
+      when constraint_error => raise mal_uso;
+      when storage_error => espacio_desbordado;
    end anadir_hijo;
 
    -- comprueba si un nodo tiene hijos
@@ -38,6 +40,8 @@ package body darbolordinario is
          return FALSE;
       end if;
       return TRUE;
+   exception
+      when constraint_error => mal_uso;
    end e_primer_hijo;
 
    -- el arbol ct pasa a ser el del primer hijo de t
@@ -45,6 +49,8 @@ package body darbolordinario is
       r: pnode renames t.raiz;
    begin
       ct.raiz := r.primer_hijo;
+   exception
+      when constraint_error => mal_uso;
    end primer_hijo;
 
    -- crea un arbol con un nodo
@@ -53,6 +59,8 @@ package body darbolordinario is
    begin
       r := new node;
       r.c := x;
+   exception
+      when storage_error => espacio_desbordado;
    end atom;
    
    -- devuelve el elemento de la raiz
@@ -60,6 +68,8 @@ package body darbolordinario is
       r: pnode renames t.raiz;
    begin
       return r.c;
+   exception
+      when constraint_error => mal_uso;
    end raiz;
    
    -- comrpueba si un nodo tiene hermano
@@ -70,6 +80,8 @@ package body darbolordinario is
          return FALSE;
       end if;
       return TRUE;
+   exception
+      when constraint_error => mal_uso;
    end e_hermano;
    
    -- el arbol st pasa a ser el del hermano de t
@@ -77,6 +89,8 @@ package body darbolordinario is
       r: pnode renames t.raiz;
    begin
       st.raiz := r.hermano;
+   exception
+      when constraint_error => mal_uso;
    end hermano;
    
    -- comprueba si un nodo tiene padre
@@ -85,9 +99,10 @@ package body darbolordinario is
    begin
       if r.padre = null then
          return FALSE;
-      else
-         return TRUE;
       end if;
+      return TRUE;
+   exception
+      when constraint_error => mal_uso;
    end e_padre;
    
    -- el arbol pt pasa a ser el del padre de t
@@ -95,5 +110,8 @@ package body darbolordinario is
       r: pnode renames t.raiz;
    begin
       pt.raiz := r.padre;
+   exception
+      when constraint_error => mal_uso;
    end padre;
+    
 end darbolordinario;

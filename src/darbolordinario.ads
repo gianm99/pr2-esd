@@ -40,8 +40,7 @@ private
       primer_hijo: pnode;
    end record;
 
-   type arbol is
-      record
-         raiz: pnode;
-      end record;
+   type arbol is record
+      raiz: pnode;
+   end record;
 end darbolordinario;

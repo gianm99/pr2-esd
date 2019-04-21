@@ -1,4 +1,3 @@
--- Cola genérica implementada con punteros en clase
 generic
    type item is private;
 package dcola is
