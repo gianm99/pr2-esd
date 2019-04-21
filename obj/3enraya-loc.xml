@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\darbolordinario.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\darbolordinario.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 9" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\darbolordinario.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 4" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\darbolordinario.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 5" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\darbolordinario.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\dtauler.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>C:\Users\gianm\Documents\INFO2\ESD\practica-2\3enraya.gpr</vfs_project>
+      <vfs_file>C:\Users\gianm\Documents\INFO2\ESD\practica-2\src\dtauler.adb</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <vfs_file >C:\Users\gianm\Documents\INFO2\ESD\Pr#195;#160;ctica 2-20190410\3enraya.gpr</vfs_file>
+    <file_marker current="true" column=" 1" line=" 1">
+      <vfs_project >C:\Users\gianm\Documents\INFO2\ESD\Pr#195;#160;ctica 2-20190410\3enraya.gpr</vfs_project>
+      <vfs_file >C:\Users\gianm\Documents\INFO2\ESD\Pr#195;#160;ctica 2-20190410\src\darbolordinario.ads</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
