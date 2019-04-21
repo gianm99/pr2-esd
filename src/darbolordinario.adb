@@ -113,5 +113,36 @@ package body darbolordinario is
    exception
       when constraint_error => mal_uso;
    end padre;
-    
+      -- recorre el arbol en amplitud y lo pone en q
+   procedure amplitud (t: in arbol; q: out dcolalem.cola) is 
+      r: pnode renames t.raiz;
+   begin
+      
+   end amplitud;
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 end darbolordinario;
