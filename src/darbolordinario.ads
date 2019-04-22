@@ -40,8 +40,5 @@ private
    type arbol is record
       raiz: pnode;
    end record;
-   -- NO SE SI ESTA BIEN
-   package dcolaarbol is new dcola(arbol);
-   use dcolaarbol;
 
 end darbolordinario;

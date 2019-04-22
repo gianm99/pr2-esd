@@ -122,17 +122,18 @@ package body darbolordinario is
    
    -- recorre el arbol y lo visita con visit
    procedure amplitud (t: in arbol) is
-      r: pnode renames t.raiz;
+      package dcolaarbol is new dcola(arbol);
+      use dcolaarbol;
+      tq: dcolaarbol.cola; -- cola de arboles
       tt: arbol; -- arbol temporal usado para recorrer
       tr: pnode renames tt.raiz; -- raiz del arbol temporal
-      tq: dcolaarbol.cola; -- cola de arboles
    begin
       cvacia(tq);
       dcolaarbol.poner(tq,t); 
       while not esta_vacia(tq) loop
          tt := coger_primero(tq);
          borrar_primero(tq);
-         visit(tr.c);
+         visit(tr.c); -- visitar el nodo
          if e_primer_hijo(tt) then
             primer_hijo(tt,tt);
             dcolaarbol.poner(tq,tt);
@@ -149,17 +150,18 @@ package body darbolordinario is
       
    -- recorre el arbol en amplitud y lo almacena en q
    procedure amplitud (t: in arbol; q: out dcolaelem.cola) is 
-      r: pnode renames t.raiz;
+      package dcolaarbol is new dcola(arbol);
+      use dcolaarbol;
+      tq: dcolaarbol.cola; -- cola de arboles
       tt: arbol; -- arbol temporal usado para recorrer
       tr: pnode renames tt.raiz; -- raiz del arbol temporal
-      tq: dcolaarbol.cola; -- cola de arboles
    begin
       cvacia(tq);
       dcolaarbol.poner(tq,t); 
       while not esta_vacia(tq) loop
          tt := coger_primero(tq);
          borrar_primero(tq);
-         poner(q,tr.c);
+         poner(q,tr.c); -- poner elemento en la cola
          if e_primer_hijo(tt) then
             primer_hijo(tt,tt);
             dcolaarbol.poner(tq,tt);
