@@ -2,9 +2,7 @@ with dcola;
 
 generic
    type elem is private;
-
    with procedure visit(x: in elem);
-
    with package dcolaelem is new dcola(elem);
    use dcolaelem;
 package darbolordinario is
