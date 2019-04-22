@@ -27,7 +27,6 @@ package darbolordinario is
    procedure amplitud (t: in arbol; q: out dcolaelem.cola);
 
 private
-
    type node;
    type pnode is access node;
 
@@ -41,4 +40,8 @@ private
    type arbol is record
       raiz: pnode;
    end record;
+   -- NO SE SI ESTA BIEN
+   package dcolaarbol is new dcola(arbol);
+   use dcolaarbol;
+
 end darbolordinario;
