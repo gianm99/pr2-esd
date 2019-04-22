@@ -136,10 +136,10 @@ package body darbolordinario is
          visit(tr.c); -- visitar el nodo
          if e_primer_hijo(tt) then
             primer_hijo(tt,tt);
-            dcolaarbol.poner(tq,tt);
+            poner(tq,tt);
             while e_hermano(tt) loop
                hermano(tt,tt);
-               dcolaarbol.poner(tq,tt);
+               poner(tq,tt);
             end loop;
          end if;
       end loop;
@@ -157,17 +157,17 @@ package body darbolordinario is
       tr: pnode renames tt.raiz; -- raiz del arbol temporal
    begin
       cvacia(tq);
-      dcolaarbol.poner(tq,t); 
+      poner(tq,t); 
       while not esta_vacia(tq) loop
          tt := coger_primero(tq);
          borrar_primero(tq);
          poner(q,tr.c); -- poner elemento en la cola
          if e_primer_hijo(tt) then
             primer_hijo(tt,tt);
-            dcolaarbol.poner(tq,tt);
+            poner(tq,tt);
             while e_hermano(tt) loop
                hermano(tt,tt);
-               dcolaarbol.poner(tq,tt);
+               poner(tq,tt);
             end loop;
          end if;
       end loop;
