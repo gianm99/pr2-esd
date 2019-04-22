@@ -175,30 +175,4 @@ package body darbolordinario is
       when constraint_error => raise mal_uso;
       when storage_error => raise espacio_desbordado;
    end amplitud;
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
 end darbolordinario;
