@@ -54,9 +54,23 @@ package body dtauler is
       return peces'Pos(peces'Value("'"& p &"'"));
    end getJugador;
 
+   -- Funció que retorna si el tauler està  complet:
+   -- totes les caselles ocupades per peces 'X' o 'O'
    function isTaulerComplet(t: in tauler) return Boolean is
-      -- Funció per completar
+      fila: integer;
+      columna: integer;
    begin
+      fila := 1;
+      columna := 1;
+      while fila<dimensio loop
+         while columna<dimensio loop
+            if t(fila,columna) = peces'First then
+               return false;
+            end if;
+            columna := columna + 1;
+         end loop;
+         fila := fila + 1;
+      end loop;
       return true;
    end isTaulerComplet;
 
@@ -70,12 +84,37 @@ package body dtauler is
    end isLinia;
 
    -- Funció que retorna si el tauler conté
-   -- una disposicié de peces pel jugador 'jugado'
+   -- una disposició de peces pel jugador 'jugador'
    -- que formin una diagonal (normal o inversa)
    function isDiagonal (t: in tauler; jugador: in integer) return Boolean is
-      -- Funció per completar
+      fila: integer;
+      columna: integer;
+      diagonal: boolean;
    begin
-      return true;
+      fila:=1;
+      columna:=1;
+      diagonal:=true;
+      while fila<=dimensio and columna<=dimensio and diagonal loop
+         if not peces'Pos(t(fila,columna)) = jugador then
+            diagonal := false;
+         end if;
+         fila:=fila+1;
+         columna:=columna+1;
+      end loop;
+      if diagonal then
+         return diagonal;
+      end if;
+      fila:=dimensio;
+      columna:=1;
+      diagonal:=true;
+      while fila>0 and columna<=dimensio and diagonal loop
+         if not peces'Pos(t(fila,columna)) = jugador then
+            diagonal = false;
+         end if;
+         fila:=fila-1;
+         columna:=columna+1;
+      end loop;
+      return diagonal;
    end isDiagonal;
 
    function isJocGuanyat (t: in tauler; jugador: in integer) return boolean is

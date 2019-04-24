@@ -124,7 +124,7 @@ package body darbolordinario is
    procedure amplitud (t: in arbol) is
       package dcolaarbol is new dcola(arbol);
       use dcolaarbol;
-      tq: dcolaarbol.cola; -- cola de arboles
+      tq: dcolaarbol.cola; -- cola de arboles temporal
       tt: arbol; -- arbol temporal usado para recorrer
       tr: pnode renames tt.raiz; -- raiz del arbol temporal
    begin
@@ -152,7 +152,7 @@ package body darbolordinario is
    procedure amplitud (t: in arbol; q: out dcolaelem.cola) is 
       package dcolaarbol is new dcola(arbol);
       use dcolaarbol;
-      tq: dcolaarbol.cola; -- cola de arboles
+      tq: dcolaarbol.cola; -- cola de arboles temporal
       tt: arbol; -- arbol temporal usado para recorrer
       tr: pnode renames tt.raiz; -- raiz del arbol temporal
    begin
