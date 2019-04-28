@@ -1,0 +1,6 @@
+espaiestats.adb:21:04: missing actual "dcolaelem"
+espaiestats.adb:21:04: in instantiation of "darbolordinario" declared at darbolordinario.ads:8
+espaiestats.adb:21:04: instantiation abandoned
+espaiestats.adb:22:08: "darboltauler" is undefined
+espaiestats.adb:24:26: "arbol" is not visible
+espaiestats.adb:24:26: non-visible declaration at darbolordinario.ads:9
