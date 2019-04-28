@@ -78,13 +78,39 @@ package body dtauler is
    -- una disposició de peces pel jugador 'jugador'
    -- que formin una línia (horitzontal o vertical)
    function isLinia (t: in tauler; jugador: in integer) return Boolean is
-      -- Funció per completar
+      -- En esta función basta con utilizar un booleano "linia" en lugar de liniaHoritzontal/Vertical
+      liniaHorirtzontal: Boolean;--
+      liniaVertical: Boolean;
+      fila: integer;
+      columna:integer;
    begin
-      return true;
-   end isLinia;
+      fila:=1;
+      columna:=1;
+      liniaHorirtzontal:= True;
+      liniaVertical:= True;
+      while  columna<=dimensio  loop
+         while fila<=dimensio and liniaHorirtzontal loop
+            if not peces'Pos(t(fila,columna))=jugador then
+               liniaHorirtzontal:=False;
+            end if;
+            fila=fila+1;
+         end loop;
+         columna=columna+1;
+         return liniaHorirtzontal;
 
-   -- Funció que retorna si el tauler conté
-   -- una disposició de peces pel jugador 'jugador'
+         while  fila<=dimensio  loop
+            while columna<=dimensio and liniaVertical loop
+               if not peces'Pos(t(fila,columna))=jugador then
+                  liniaVertical:=False;
+               end if;
+               columna=columna+1;
+            end loop;
+            fila=fila+1;
+            return liniaVertical;
+         end isLinia;
+
+         -- Funció que retorna si el tauler conté
+         -- una disposició de peces pel jugador 'jugador'
    -- que formin una diagonal (normal o inversa)
    function isDiagonal (t: in tauler; jugador: in integer) return Boolean is
       fila: integer;
@@ -118,9 +144,12 @@ package body dtauler is
    end isDiagonal;
 
    function isJocGuanyat (t: in tauler; jugador: in integer) return boolean is
-      -- Funció per completar
    begin
-      return true;
+   if isDiagonal(tauler jugador) or isLinia(tauler jugador) then
+        return true;
+   else
+        return false;
+   end if;
    end isJocGuanyat;
 
 end dtauler;
