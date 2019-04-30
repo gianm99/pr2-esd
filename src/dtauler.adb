@@ -90,27 +90,30 @@ package body dtauler is
       liniaVertical:= True;
       while  columna<=dimensio  loop
          while fila<=dimensio and liniaHorirtzontal loop
-            if not peces'Pos(t(fila,columna))=jugador then
+            if peces'Pos(t(fila,columna))/=jugador then
                liniaHorirtzontal:=False;
             end if;
-            fila=fila+1;
+            fila:=fila+1;
          end loop;
-         columna=columna+1;
+         columna:=columna+1;
+      end loop;
+      if liniaHorirtzontal then
          return liniaHorirtzontal;
+      end if;
+      while  fila<=dimensio  loop
+         while columna<=dimensio and liniaVertical loop
+            if peces'Pos(t(fila,columna))/=jugador then
+               liniaVertical:=False;
+            end if;
+            columna:=columna+1;
+         end loop;
+         fila:=fila+1;
+      end loop;
+      return liniaVertical;
+   end isLinia;
 
-         while  fila<=dimensio  loop
-            while columna<=dimensio and liniaVertical loop
-               if not peces'Pos(t(fila,columna))=jugador then
-                  liniaVertical:=False;
-               end if;
-               columna=columna+1;
-            end loop;
-            fila=fila+1;
-            return liniaVertical;
-         end isLinia;
-
-         -- Funció que retorna si el tauler conté
-         -- una disposició de peces pel jugador 'jugador'
+   -- Funció que retorna si el tauler conté
+   -- una disposició de peces pel jugador 'jugador'
    -- que formin una diagonal (normal o inversa)
    function isDiagonal (t: in tauler; jugador: in integer) return Boolean is
       fila: integer;
@@ -121,7 +124,7 @@ package body dtauler is
       columna:=1;
       diagonal:=true;
       while fila<=dimensio and columna<=dimensio and diagonal loop
-         if not peces'Pos(t(fila,columna)) = jugador then
+         if  peces'Pos(t(fila,columna)) /= jugador then
             diagonal := false;
          end if;
          fila:=fila+1;
@@ -134,8 +137,8 @@ package body dtauler is
       columna:=1;
       diagonal:=true;
       while fila>0 and columna<=dimensio and diagonal loop
-         if not peces'Pos(t(fila,columna)) = jugador then
-            diagonal = false;
+         if peces'Pos(t(fila,columna)) /= jugador then
+            diagonal := false;
          end if;
          fila:=fila-1;
          columna:=columna+1;
@@ -145,11 +148,11 @@ package body dtauler is
 
    function isJocGuanyat (t: in tauler; jugador: in integer) return boolean is
    begin
-   if isDiagonal(tauler jugador) or isLinia(tauler jugador) then
-        return true;
-   else
-        return false;
-   end if;
+      if isDiagonal(t, jugador) or isLinia(t, jugador) then
+         return true;
+      else
+         return false;
+      end if;
    end isJocGuanyat;
 
 end dtauler;

@@ -3,8 +3,8 @@ with dcola;
 generic
    type elem is private;
    with procedure visit(x: in elem);
-   with package dcolaelem is new dcola(elem);
-   use dcolaelem;
+   --with package dcolaelem is new dcola(elem);
+   --use dcolaelem;
 package darbolordinario is
    type arbol is limited private;
 
@@ -24,7 +24,7 @@ package darbolordinario is
    procedure padre (t: in arbol; pt: out arbol);
 
    procedure amplitud (t: in arbol);
-   procedure amplitud (t: in arbol; q: out dcolaelem.cola);
+   --procedure amplitud (t: in arbol; q: out dcolaelem.cola);
 
 private
    type node;
