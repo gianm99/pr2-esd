@@ -24,16 +24,6 @@ package dtauler is
    -- a una situació guanyadora pel jugador 'jugador'
    function isJocGuanyat (t: in tauler; jugador: in integer) return boolean;
 
-   -- Funció que retorna si el tauler conté
-   -- una disposició de peces pel jugador 'jugador'
-   -- que formin una línia (horitzontal o vertical)
-   function isLinia (t: in tauler; jugador: in integer) return Boolean;
-
-   -- Funció que retorna si el tauler conté
-   -- una disposició de peces pel jugador 'jugador'
-   -- que formin una diagonal (normal o inversa)
-   function isDiagonal (t: in tauler; jugador: in integer) return Boolean;
-
    -- Funció que retorna el número de jugador
    -- a partir de l'string corresponent a la
    -- imatge de la peça ('X', 'O')
