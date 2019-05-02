@@ -12,7 +12,6 @@ package body dtauler is
       p: peces;
       s: String(1..3);
    begin
-      New_Line;
       for i in t'Range(1) loop
          for j in t'Range(2) loop
             p := t(i, j);
@@ -54,7 +53,7 @@ package body dtauler is
       return peces'Pos(peces'Value("'"& p &"'"));
    end getJugador;
 
-   -- Funció que retorna si el tauler està  complet:
+   -- Funcio que retorna si el tauler esta complet:
    -- totes les caselles ocupades per peces 'X' o 'O'
    function isTaulerComplet(t: in tauler) return Boolean is
       fila: integer;
@@ -74,76 +73,84 @@ package body dtauler is
       return true;
    end isTaulerComplet;
 
-   -- Funció que retorna si el tauler conté
-   -- una disposició de peces pel jugador 'jugador'
-   -- que formin una línia (horitzontal o vertical)
+   -- Funcio que retorna si el tauler conte
+   -- una disposicio de peces pel jugador 'jugador'
+   -- que formin una linia (horitzontal o vertical)
    function isLinia (t: in tauler; jugador: in integer) return Boolean is
-      -- En esta función basta con utilizar un booleano "linia" en lugar de liniaHoritzontal/Vertical
-      liniaHorirtzontal: Boolean;--
-      liniaVertical: Boolean;
+      -- En esta funcion basta con utilizar un booleano "linia" en lugar de linea_horizontal/Vertical
+      linea_horizontal: Boolean;
+      linea_vertical: Boolean;
       fila: integer;
       columna:integer;
    begin
+      -- linea horizontal
       fila:=1;
-      columna:=1;
-      liniaHorirtzontal:= True;
-      liniaVertical:= True;
-      while  columna<=dimensio  loop
-         while fila<=dimensio and liniaHorirtzontal loop
+      while fila<=dimensio loop
+         columna:=1;
+         linea_horizontal:=true;
+         while columna<=dimensio loop
             if peces'Pos(t(fila,columna))/=jugador then
-               liniaHorirtzontal:=False;
-            end if;
-            fila:=fila+1;
-         end loop;
-         columna:=columna+1;
-      end loop;
-      if liniaHorirtzontal then
-         return liniaHorirtzontal;
-      end if;
-      while  fila<=dimensio  loop
-         while columna<=dimensio and liniaVertical loop
-            if peces'Pos(t(fila,columna))/=jugador then
-               liniaVertical:=False;
+               linea_horizontal:=false;
             end if;
             columna:=columna+1;
          end loop;
+         exit when linea_horizontal=true;
          fila:=fila+1;
       end loop;
-      return liniaVertical;
+      -- comprobar si hay linia horizontal
+      if linea_horizontal then
+         return true;
+      end if;
+      -- linea vertical
+      columna:=1;
+      while columna<=dimensio loop
+         fila:=1;
+         linea_vertical:=true;
+         while fila<=dimensio loop
+            if peces'Pos(t(fila,columna))/=jugador then
+               linea_vertical:=false;
+            end if;
+            fila:=fila+1;
+         end loop;
+         exit when linea_vertical=true;
+         columna:=columna+1;
+      end loop;
+      return linea_vertical;
    end isLinia;
 
-   -- Funció que retorna si el tauler conté
-   -- una disposició de peces pel jugador 'jugador'
+   -- Funcio que retorna si el tauler conte
+   -- una disposicio de peces pel jugador 'jugador'
    -- que formin una diagonal (normal o inversa)
    function isDiagonal (t: in tauler; jugador: in integer) return Boolean is
       fila: integer;
       columna: integer;
-      diagonal: boolean;
+      diagonal_normal: boolean;
+      diagonal_inversa: boolean;
    begin
+      diagonal_normal:=true;
+      diagonal_inversa:=true;
       fila:=1;
       columna:=1;
-      diagonal:=true;
-      while fila<=dimensio and columna<=dimensio and diagonal loop
+      while fila<=dimensio and columna<=dimensio and diagonal_normal loop
          if  peces'Pos(t(fila,columna)) /= jugador then
-            diagonal := false;
+            diagonal_normal := false;
          end if;
          fila:=fila+1;
          columna:=columna+1;
       end loop;
-      if diagonal then
-         return diagonal;
+      if diagonal_normal then
+         return true;
       end if;
       fila:=dimensio;
       columna:=1;
-      diagonal:=true;
-      while fila>0 and columna<=dimensio and diagonal loop
+      while fila>=1 and columna<=dimensio and diagonal_inversa loop
          if peces'Pos(t(fila,columna)) /= jugador then
-            diagonal := false;
+            diagonal_inversa := false;
          end if;
          fila:=fila-1;
          columna:=columna+1;
       end loop;
-      return diagonal;
+      return diagonal_inversa;
    end isDiagonal;
 
    function isJocGuanyat (t: in tauler; jugador: in integer) return boolean is
