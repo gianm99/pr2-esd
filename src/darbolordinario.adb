@@ -120,7 +120,7 @@ package body darbolordinario is
       when constraint_error => raise mal_uso;
    end padre;
    
-   -- recorre el arbol y lo visita con visit
+   -- recorre el arbol en amplitud y lo visita con visit
    procedure amplitud (t: in arbol) is
       package dcolaarbol is new dcola(arbol);
       use dcolaarbol;
@@ -148,32 +148,3 @@ package body darbolordinario is
       when storage_error => raise espacio_desbordado;
    end amplitud;
 end darbolordinario;
-     
---     -- recorre el arbol en amplitud y lo almacena en q
---     procedure amplitud (t: in arbol; q: out dcolaelem.cola) is 
---        package dcolaarbol is new dcola(arbol);
---        use dcolaarbol;
---        tq: dcolaarbol.cola; -- cola de arboles temporal
---        tt: arbol; -- arbol temporal usado para recorrer
---        tr: pnode renames tt.raiz; -- raiz del arbol temporal
---     begin
---        cvacia(tq);
---        poner(tq,t); 
---        while not esta_vacia(tq) loop
---           tt := coger_primero(tq);
---           borrar_primero(tq);
---           poner(q,tr.c); -- poner elemento en la cola
---           if e_primer_hijo(tt) then
---              primer_hijo(tt,tt);
---              poner(tq,tt);
---              while e_hermano(tt) loop
---                 hermano(tt,tt);
---                 poner(tq,tt);
---              end loop;
---           end if;
---        end loop;
---     exception
---        when constraint_error => raise mal_uso;
---        when storage_error => raise espacio_desbordado;
---     end amplitud;
---  end darbolordinario;

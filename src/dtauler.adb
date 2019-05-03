@@ -77,9 +77,7 @@ package body dtauler is
    -- una disposicio de peces pel jugador 'jugador'
    -- que formin una linia (horitzontal o vertical)
    function isLinia (t: in tauler; jugador: in integer) return Boolean is
-      -- En esta funcion basta con utilizar un booleano "linia" en lugar de linea_horizontal/Vertical
-      linea_horizontal: Boolean;
-      linea_vertical: Boolean;
+      linea: boolean;
       fila: integer;
       columna:integer;
    begin
@@ -87,35 +85,35 @@ package body dtauler is
       fila:=1;
       while fila<=dimensio loop
          columna:=1;
-         linea_horizontal:=true;
+         linea:=true;
          while columna<=dimensio loop
             if peces'Pos(t(fila,columna))/=jugador then
-               linea_horizontal:=false;
+               linea:=false;
             end if;
             columna:=columna+1;
          end loop;
-         exit when linea_horizontal=true;
+         exit when linea=true;
          fila:=fila+1;
       end loop;
       -- comprobar si hay linia horizontal
-      if linea_horizontal then
+      if linea then
          return true;
       end if;
       -- linea vertical
       columna:=1;
       while columna<=dimensio loop
          fila:=1;
-         linea_vertical:=true;
+         linea:=true;
          while fila<=dimensio loop
             if peces'Pos(t(fila,columna))/=jugador then
-               linea_vertical:=false;
+               linea:=false;
             end if;
             fila:=fila+1;
          end loop;
-         exit when linea_vertical=true;
+         exit when linea=true;
          columna:=columna+1;
       end loop;
-      return linea_vertical;
+      return linea;
    end isLinia;
 
    -- Funcio que retorna si el tauler conte
