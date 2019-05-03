@@ -1,11 +1,7 @@
-with Ada.Text_IO;
-use Ada.Text_IO;
-with Ada.Integer_Text_IO;
-use Ada.Integer_Text_IO;
-with Ada.Characters.Handling;
-use Ada.Characters.Handling;
-with dtauler;
-use dtauler;
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+with Ada.Characters.Handling; use Ada.Characters.Handling;
+with dtauler; use dtauler;
 with darbolordinario;
 with dcola;
 
@@ -67,6 +63,9 @@ procedure Main is
          end loop;
          i:=i+1;
       end loop;
+   exception
+      when valor_incorrecto =>
+      Put_Line("El valor introducido para el tablero es incorrecto");
    end estado_inicial;
 
    package darboltauler is new darbolordinario(estat, print);
@@ -135,10 +134,19 @@ procedure Main is
             end if;
          end if;
       end loop;
-      -- volver a la raíz
+      -- vuelve a la raiz
       while e_padre(p_arbol.all) loop
          padre(p_arbol.all, p_arbol.all);
       end loop;
+   exception
+      when dcolaarbol.mal_uso =>
+         Put_Line("Mal uso de la cola");
+      when dcolaarbol.espacio_desbordado=>
+         Put_Line("Espacio desbordado por la cola");
+      when darboltauler.mal_uso =>
+         Put_Line("Mal uso del arbol");
+      when darboltauler.espacio_desbordado=>
+         Put_Line("Espacio desbordado por el arbol");
    end crear_arbol;
 
    estado: estat; -- estado de juego inicial
