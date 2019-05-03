@@ -1,3 +1,4 @@
+-- Gian Lucas Martín Chamorro y Tomás Bordoy García-Carpintero
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Characters.Handling; use Ada.Characters.Handling;
